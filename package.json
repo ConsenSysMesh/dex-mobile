@@ -1,0 +1,19 @@
+{
+  "name": "dex-mobile",
+  "version": "0.0.1",
+  "description": "FX trading ERC20 tokens on mobile dapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "forex",
+    "erc20",
+    "react-native",
+    "react",
+    "solidity",
+    "javascript"
+  ],
+  "author": "Sean Francis",
+  "license": "ISC"
+}
