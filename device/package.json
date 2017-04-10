@@ -18,5 +18,9 @@
 	},
 	"jest": {
 		"preset": "react-native"
-	}
+	},
+	"description": "FX trading ERC20 tokens on a mobile dapp",
+	"main": "src/index.js",
+	"author": "Sean Francis",
+	"license": "MIT"
 }
