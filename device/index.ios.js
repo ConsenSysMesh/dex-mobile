@@ -3,22 +3,26 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-import Main from './src/components/index'
+import { Navigation } from './src/components/index'
 
+import store from './src/store'
+import { Provider, connect } from 'react-redux';
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
 
 export default class device extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Main />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Navigation />
+        </View>
+      </Provider>
     );
   }
 }
