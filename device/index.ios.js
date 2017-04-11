@@ -3,6 +3,8 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+import Main from './src/components/index'
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -15,7 +17,7 @@ export default class device extends Component {
   render() {
     return (
       <View style={styles.container}>
-
+        <Main />
       </View>
     );
   }
