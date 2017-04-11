@@ -9,7 +9,7 @@ export default class Main extends Component {
     super(props)
   }
 
-  rener() {
+  render() {
     return(
       <View>
       </View>
