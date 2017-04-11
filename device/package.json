@@ -5,11 +5,15 @@
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
-		"flow": "node_mopdules/.bin/flow"
+		"flow": "node_modules/.bin/flow"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.43.3"
+		"react-native": "0.43.3",
+		"react-native-swipe-gestures": "^1.0.2",
+		"react-redux": "^5.0.4",
+		"redux": "^3.6.0",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.24.1",
