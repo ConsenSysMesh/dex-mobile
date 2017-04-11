@@ -1,6 +1,8 @@
+import * as reducers from './reducers/index'
 import thunk from 'redux-thunk'
-import { createStore, applyMiddleware } from 'redux'
-// import navigation from 'reducers/index'
-const store = createStore(reducer, applyMiddleware(thunk));
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 
-export default store;
+const reducer = combineReducers({...reducers})
+const store = createStore(reducer, applyMiddleware(thunk))
+
+export default store
