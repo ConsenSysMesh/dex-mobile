@@ -1,5 +1,5 @@
-import navigator from 'navigator'
-
+import navigation  from './navigation'
+console.log('navigation(index)', navigation);
 export {
-  navigator
+  navigation,
 }

@@ -7,31 +7,33 @@ const INITIAL_STATE = {
 
 export default function navigation(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case: 'SWIPE_RIGHT':
+    case 'SWIPE_RIGHT':
       return {
-        ...state
+        ...state,
         x: state.x++
       }
-      break;
-    case: 'SWIPE_LEFT':
+      break
+    case 'SWIPE_LEFT':
       return {
         ...state,
         x: state.x--
       }
-      break;
-    case: 'SWIPE_UP':
+      break
+    case 'SWIPE_UP':
+      console.log('hit reducer')
       return {
         ...state,
         y: state.y++
       }
-      break;
-    case: 'SWIPE_DOWN':
+      break
+    case 'SWIPE_DOWN':
       return {
         ...state,
         y: state.y--
       }
-      break;
+      break
     default:
-      break;
+      return state
+      break
   }
 }
