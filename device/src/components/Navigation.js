@@ -19,7 +19,8 @@ class NavigationComponent extends Component {
   }
 
   onSwipe(direction, state) {
-    console.log('direction', direction, 'state', state)
+    const { dispatch } = this.props
+    console.log('dispatch', dispatch)
     switch (direction) {
       case 'SWIPE_DOWN':
         this.setState({direction: direction})
@@ -36,7 +37,6 @@ class NavigationComponent extends Component {
       default:
         break;
     }
-    console.log('recognized swipe')
   }
 
   render() {
