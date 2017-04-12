@@ -47,10 +47,10 @@ class NavigationComponent extends Component {
         onSwipe={ (direction, state) => this.onSwipe(direction, state)}
         config={config}
         style={{
-          flex: 1
+          flex: 1,
         }}
       >
-        <Text>Recieved gesture: {this.state.direction}</Text>
+        <Text>Recieved gesture: </Text>
       </GestureRecognizer>
     )
   }
