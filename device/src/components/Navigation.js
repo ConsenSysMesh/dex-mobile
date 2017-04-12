@@ -41,7 +41,7 @@ class NavigationComponent extends Component {
       velocityThreshold: 0.1,
       directionalOffsetThreshold: 80
     };
-
+    console.log('this.props.x', this.props.navigation.x)
     return (
       <GestureRecognizer
         onSwipe={ (direction, state) => this.onSwipe(direction, state)}
@@ -50,8 +50,8 @@ class NavigationComponent extends Component {
           flex: 1,
         }}
       >
-        <Text>X-axis{} </Text>
-        <Text>Y-axis{} </Text>
+        <Text>X-axis{this.props.navigation.x}</Text>
+        <Text>Y-axis{this.props.navigation.y}</Text>
       </GestureRecognizer>
     )
   }
