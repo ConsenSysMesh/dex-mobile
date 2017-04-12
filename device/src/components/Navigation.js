@@ -14,24 +14,24 @@ class NavigationComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      gestureName: '0'
+      direction: ''
     }
   }
 
   onSwipe(direction, state) {
-    console.log('direction', direction, 'state', gestureState)
+    console.log('direction', direction, 'state', state)
     switch (direction) {
       case 'SWIPE_DOWN':
-        this.setState(direction: direction)
+        this.setState({direction: direction})
         break;
       case 'SWIPE_UP':
-        this.setState(direction: direction)
+        this.setState({direction: direction})
         break;
       case 'SWIPE_RIGHT':
-        this.setState(direction: direction)
+        this.setState({direction: direction})
         break;
       case 'SWIPE_LEFT':
-        this.setState(direction: direction)
+        this.setState({direction: direction})
         break;
       default:
         break;
@@ -53,7 +53,7 @@ class NavigationComponent extends Component {
           flex: 1
         }}
       >
-        <Text>Recieved gesture: {this.state.gestureName}</Text>
+        <Text>Recieved gesture: {this.state.direction}</Text>
       </GestureRecognizer>
     )
   }
