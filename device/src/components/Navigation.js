@@ -1,4 +1,6 @@
 import { Main } from './index'
+// import Router from './Router'
+// console.log('Router', Router)
 import store from '../store'
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures'
 
@@ -52,6 +54,7 @@ class NavigationComponent extends Component {
       >
         <Text>X-axis{this.props.navigation.x}</Text>
         <Text>Y-axis{this.props.navigation.y}</Text>
+
       </GestureRecognizer>
     )
   }

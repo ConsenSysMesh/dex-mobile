@@ -6,7 +6,7 @@ import {
 
 export default class Market extends Component {
   constructor() {
-
+    super()
   }
 
   render() {

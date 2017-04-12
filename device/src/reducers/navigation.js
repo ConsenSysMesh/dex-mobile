@@ -8,19 +8,20 @@ const INITIAL_STATE = {
 export default function navigation(state = INITIAL_STATE, action) {
   switch(action.type) {
     case 'SWIPE_RIGHT':
+      console.log('hit reducer')
       return {
         ...state,
         x: state.x + 1
       }
       break
     case 'SWIPE_LEFT':
+      console.log('hit reducer')
       return {
         ...state,
         x: state.x - 1
       }
       break
     case 'SWIPE_UP':
-      console.log('hit reducer')
       return {
         ...state,
         y: state.y + 1
@@ -29,7 +30,7 @@ export default function navigation(state = INITIAL_STATE, action) {
     case 'SWIPE_DOWN':
       return {
         ...state,
-        y: state.y -1
+        y: state.y - 1
       }
       break
     default:
