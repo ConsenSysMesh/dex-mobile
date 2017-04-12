@@ -17,7 +17,7 @@ class NavigationComponent extends Component {
 
   onSwipe(direction, state) {
     const { dispatch } = this.props
-
+    console.log('direction', direction)
     switch (direction) {
       case 'SWIPE_DOWN':
         dispatch({type: 'SWIPE_DOWN'})
@@ -38,10 +38,10 @@ class NavigationComponent extends Component {
 
   render() {
     const config = {
-      velocityThreshold: 0.1,
-      directionalOffsetThreshold: 80
+      velocityThreshold: 0.3,
+      directionalOffsetThreshold: 100
     };
-    console.log('this.props.x', this.props.navigation.x)
+    console.log('this.props.x', this.props)
     return (
       <GestureRecognizer
         onSwipe={ (direction, state) => this.onSwipe(direction, state)}
