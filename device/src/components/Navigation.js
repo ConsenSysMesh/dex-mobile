@@ -23,14 +23,13 @@ class NavigationComponent extends Component {
         dispatch({type: 'SWIPE_DOWN'})
         break;
       case 'SWIPE_UP':
-        this.setState({direction: direction})
-
+        dispatch({type: 'SWIPE_UP'})
         break;
       case 'SWIPE_RIGHT':
-        this.setState({direction: direction})
+        dispatch({type: 'SWIPE_RIGHT'})
         break;
       case 'SWIPE_LEFT':
-        this.setState({direction: direction})
+        dispatch({type: 'SWIPE_LEFT'})
         break;
       default:
         break;
