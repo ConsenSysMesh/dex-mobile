@@ -1,5 +1,5 @@
 import { Main } from './index'
-
+import store from '../store'
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures'
 
 import React, { Component } from 'react'
@@ -8,16 +8,18 @@ import {
   StyleSheet,
   Text,
 } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class Navigation extends Component {
+class NavigationComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      gestureName: 'asdf'
+      gestureName: '0'
     }
   }
 
   onSwipe(getsureName, gestureState) {
+
     // console.log('gestureName', gestureName, 'gestureState', gestureState)
     // switch (gestureName) {
     //   case 'SWIPE_DOWN':
@@ -54,10 +56,16 @@ export default class Navigation extends Component {
       >
         <Text>Recieved gesture: {this.state.gestureName}</Text>
       </GestureRecognizer>
-
-
-
-
     )
   }
 }
+
+const mapStoreToProps = (store) => {
+  let mappedProps = new Object()
+  mappedProps.navigation = store.navigation
+  return mappedProps
+}
+
+const Navigation = connect(mapStoreToProps)(GestureComponent)
+
+export default Navigation
