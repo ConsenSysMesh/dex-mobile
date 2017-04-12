@@ -1,5 +1,10 @@
-import Router from 'react-native-router'
+// import components
+import { Market } from './index'
 
+import R from 'react-native-router'
+
+
+// establish routes
 const route = {
   name: 'market',
   component: Market
@@ -8,7 +13,7 @@ const route = {
 export default class Router extends Component {
   render() {
     return (
-      <Router firstRoute={route}>
+      <R firstRoute={route} />
     )
   }
 }
