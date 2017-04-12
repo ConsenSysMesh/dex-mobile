@@ -18,25 +18,24 @@ class NavigationComponent extends Component {
     }
   }
 
-  onSwipe(getsureName, gestureState) {
-
-    // console.log('gestureName', gestureName, 'gestureState', gestureState)
-    // switch (gestureName) {
-    //   case 'SWIPE_DOWN':
-    //     this.setState(gestureName: gestureName)
-    //     break;
-    //   case 'SWIPE_UP':
-    //     this.setState(gestureName: gestureName)
-    //     break;
-    //   case 'SWIPE_RIGHT':
-    //     this.setState(gestureName: gestureName)
-    //     break;
-    //   case 'SWIPE_LEFT':
-    //     this.setState(gestureName: gestureName)
-    //     break;
-    //   default:
-    //     break;
-    // }
+  onSwipe(direction, state) {
+    console.log('direction', direction, 'state', gestureState)
+    switch (direction) {
+      case 'SWIPE_DOWN':
+        this.setState(direction: direction)
+        break;
+      case 'SWIPE_UP':
+        this.setState(direction: direction)
+        break;
+      case 'SWIPE_RIGHT':
+        this.setState(direction: direction)
+        break;
+      case 'SWIPE_LEFT':
+        this.setState(direction: direction)
+        break;
+      default:
+        break;
+    }
     console.log('recognized swipe')
   }
 
@@ -66,6 +65,6 @@ const mapStoreToProps = (store) => {
   return mappedProps
 }
 
-const Navigation = connect(mapStoreToProps)(GestureComponent)
+const Navigation = connect(mapStoreToProps)(NavigationComponent)
 
 export default Navigation
