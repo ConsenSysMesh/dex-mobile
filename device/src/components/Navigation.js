@@ -13,9 +13,6 @@ import { connect } from 'react-redux'
 class NavigationComponent extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      direction: ''
-    }
   }
 
   onSwipe(direction, state) {
@@ -23,10 +20,11 @@ class NavigationComponent extends Component {
     console.log('dispatch', dispatch)
     switch (direction) {
       case 'SWIPE_DOWN':
-        this.setState({direction: direction})
+        dispatch({type: 'SWIPE_DOWN'})
         break;
       case 'SWIPE_UP':
         this.setState({direction: direction})
+
         break;
       case 'SWIPE_RIGHT':
         this.setState({direction: direction})
