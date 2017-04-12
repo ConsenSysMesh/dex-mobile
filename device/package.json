@@ -10,7 +10,6 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.3",
-		"react-native-router": "^0.2.1",
 		"react-native-swipe-gestures": "^1.0.2",
 		"react-redux": "^5.0.4",
 		"redux": "^3.6.0",
