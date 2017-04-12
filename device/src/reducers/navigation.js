@@ -10,26 +10,26 @@ export default function navigation(state = INITIAL_STATE, action) {
     case 'SWIPE_RIGHT':
       return {
         ...state,
-        x: state.x++
+        x: state.x + 1
       }
       break
     case 'SWIPE_LEFT':
       return {
         ...state,
-        x: state.x--
+        x: state.x - 1
       }
       break
     case 'SWIPE_UP':
       console.log('hit reducer')
       return {
         ...state,
-        y: state.y++
+        y: state.y + 1
       }
       break
     case 'SWIPE_DOWN':
       return {
         ...state,
-        y: state.y--
+        y: state.y -1
       }
       break
     default:
