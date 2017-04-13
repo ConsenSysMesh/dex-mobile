@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { VictoryBar } from 'victory-native'
+
 import {
   View,
   StyleSheet,
@@ -11,7 +13,7 @@ export default class LineGraph extends Component {
 
   render() {
     return (
-      <View />
+      <VictoryBar />
     )
   }
 }
