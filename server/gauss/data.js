@@ -9,6 +9,6 @@
 */
 let line_graph_data = {};
 
-exports {
+export {
   line_graph_data,
 }

@@ -1,6 +1,8 @@
 import Promise from 'bluebird';
 import gaussian from 'gaussian';
 
+import { line_graph_data } from './data'
+console.log('data', line_grpah_data)
 // globals
 let volume = 5;
 let price = 1;
