@@ -1,3 +1,6 @@
+import Router from './Router'
+import Navigation from './Navigation'
+
 import React, { Component } from 'react'
 import {
   View,
