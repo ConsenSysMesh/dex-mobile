@@ -7,10 +7,10 @@
     time: (unix timestamp)
     price: (market price)
 */
-let line_graph_data = {};
+let line_graph_data = [];
 
 export function appendLineGraph(time, price) {
-  console.log('appending data point')
+  console.log('appending data point', time, price)
   line_graph_data.push({
     time: time,
     prie: price
