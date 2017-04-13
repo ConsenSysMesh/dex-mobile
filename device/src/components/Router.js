@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Market } from './index'
 import {
   View,
+  StyleSheet,
 } from 'react-native'
 import Router from 'react-native-simple-router'
 
@@ -10,7 +11,8 @@ import Router from 'react-native-simple-router'
 // establish routes
 const route = {
   name: 'market',
-  component: Market
+  component: Market,
+  sceneConfig: Navigator.SceneConfigs.FloatFromRight
 }
 
 export default class RouterComponent extends Component {
@@ -18,7 +20,15 @@ export default class RouterComponent extends Component {
     return (
       <Router
         firstRouter={route}
+        headerStyle={styles.header}
+        ref={'router'}
       />
     )
   }
 }
+
+const styles = StyleSheet.create({
+  header: {
+	backgroundColor: '#5cafec',
+  },
+});
