@@ -9,6 +9,10 @@
 */
 let line_graph_data = {};
 
-export {
-  line_graph_data,
+export function appendLineGraph(time, price) {
+  console.log('appending data point')
+  line_graph_data.push({
+    time: time,
+    prie: price
+  })
 }
