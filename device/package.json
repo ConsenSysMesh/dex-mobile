@@ -1,34 +1,36 @@
 {
-	"name": "device",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest",
-		"flow": "node_modules/.bin/flow"
-	},
-	"dependencies": {
-		"react": "16.0.0-alpha.6",
-		"react-native": "0.43.3",
-		"react-native-swipe-gestures": "^1.0.2",
-		"react-redux": "^5.0.4",
-		"redux": "^3.6.0",
-		"redux-thunk": "^2.2.0"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.24.1",
-		"babel-jest": "19.0.0",
-		"babel-preset-flow": "^6.23.0",
-		"babel-preset-react-native": "1.9.1",
-		"flow-bin": "^0.43.1",
-		"jest": "19.0.2",
-		"react-test-renderer": "16.0.0-alpha.6"
-	},
-	"jest": {
-		"preset": "react-native"
-	},
-	"description": "FX trading ERC20 tokens on a mobile dapp",
-	"main": "src/index.js",
-	"author": "Sean Francis",
-	"license": "MIT"
+  "name": "device",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "flow": "node_modules/.bin/flow"
+  },
+  "dependencies": {
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.43.3",
+    "react-native-router": "^0.2.1",
+    "react-native-simple-router": "^0.12.0",
+    "react-native-swipe-gestures": "^1.0.2",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-jest": "19.0.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react-native": "1.9.1",
+    "flow-bin": "^0.43.1",
+    "jest": "19.0.2",
+    "react-test-renderer": "16.0.0-alpha.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "description": "FX trading ERC20 tokens on a mobile dapp",
+  "main": "src/index.js",
+  "author": "Sean Francis",
+  "license": "MIT"
 }
