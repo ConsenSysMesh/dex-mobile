@@ -5,21 +5,18 @@ import {
   View,
   StyleSheet,
 } from 'react-native'
-import Router from 'react-native-simple-router'
 
+import { stackNavigator } from 'react-navigation'
 
-// establish routes
-const route = {
-  name: 'market',
-  component: Market,
-  sceneConfig: Navigator.SceneConfigs.FloatFromRight
-}
+export const appNavigator = stackNavigator({
+  Market: { screen: Market }
+})
 
 export default class RouterComponent extends Component {
   render() {
     return (
       <Router
-        firstRouter={route}
+        firstRouter={route1}
         headerStyle={styles.header}
         ref={'router'}
       />
