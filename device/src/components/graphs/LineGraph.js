@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { VictoryBar } from 'victory-native'
+import { VictoryLine } from 'victory-native'
 
 import {
   View,
@@ -13,7 +13,7 @@ export default class LineGraph extends Component {
 
   render() {
     return (
-      <VictoryBar />
+      <VictoryLine />
     )
   }
 }
