@@ -4,10 +4,13 @@ import Navigation from './Navigation'
 
 // market
 import Market from './markets/Market'
+console.log('Market', Market)
+// graphs
+import LineGraph from './graphs/LineGraph'
 
-console.log('Main(index)', Main)
 export {
   Main,
   Navigation,
-  Market
+  Market,
+  LineGraph,
 }
