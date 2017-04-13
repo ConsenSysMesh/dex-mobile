@@ -15,5 +15,9 @@
     "javascript"
   ],
   "author": "Sean Francis",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "gaussian": "^1.1.0"
+  }
 }
