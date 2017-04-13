@@ -1,8 +1,8 @@
 import Promise from 'bluebird';
 import gaussian from 'gaussian';
 
-import { line_graph_data } from './data'
-console.log('data', line_graph_data)
+import { appendLineGraph } from './data'
+
 // globals
 let volume = 5;
 let price = 1;
@@ -18,6 +18,8 @@ export function simulationLoop() {
   return Promise.delay(5000)
   .then(() => {
     return calculateMarketParams();
+  }).then(() => {
+    return appendLineGraph(price, new Date())
   }).then(() => {
     return shotgun();
   }).then(() => {
