@@ -16,6 +16,7 @@ export default class Market extends Component {
     return (
       <View>
         <Text> USD/GBP </Text>
+        <LineGraph />
       </View>
     )
   }
