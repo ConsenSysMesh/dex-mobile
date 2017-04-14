@@ -1,13 +1,18 @@
 import Promise from 'bluebird'
 
 export default class Graphs {
-  cosntructor() {
+  constructor() {
 
   }
 
   getPriceData() {
     return (dispatch) => {
-      console.log('hit get price data method')
+      fetch('http://localhost:6000/price')
+      .then((respone) => {
+        console.log('response', response)
+      }).catch((error) => {
+        console.log('error')
+      })
     }
   }
 }
