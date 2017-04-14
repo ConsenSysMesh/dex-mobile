@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import gaussian from 'gaussian';
 
-import { appendLineGraph, let line_graph_data } from './data'
+import { appendLineGraph } from './data'
 
 
 // globals
