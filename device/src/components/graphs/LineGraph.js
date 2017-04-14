@@ -1,14 +1,20 @@
+import Graphs from '../../actions/Graphs';
 import React, { Component } from 'react'
 import { VictoryLine } from 'victory-native'
-
+import { connect } from 'react-redux'
+// import { appendLineGraph } from './../../../../server/gauss/data'
 import {
   View,
   StyleSheet,
 } from 'react-native'
 
-export default class LineGraph extends Component {
+class LineGraphComponent extends Component {
   constructor() {
     super()
+  }
+
+  componentWillMount() {
+
   }
 
   render() {
@@ -17,3 +23,13 @@ export default class LineGraph extends Component {
     )
   }
 }
+
+const mapStoreToProps = (store) => {
+  let mappedProps = new Object()
+  mappedProps.graphs = store.graphs
+  return mappedProps
+}
+
+const Navigation = connect(mapStoreToProps)(LineGraphComponent)
+
+export default LineGraphComponent;
