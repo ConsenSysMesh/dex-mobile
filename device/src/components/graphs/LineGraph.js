@@ -1,8 +1,8 @@
-import Graphs from '../../actions/Graphs';
 import React, { Component } from 'react'
 import { VictoryLine } from 'victory-native'
 import { connect } from 'react-redux'
-// import { appendLineGraph } from './../../../../server/gauss/data'
+import { Graphs } from '../../actions/index'
+
 import {
   View,
   StyleSheet,
@@ -14,7 +14,7 @@ class LineGraphComponent extends Component {
   }
 
   componentWillMount() {
-
+    console.log('graphs', Graphs.getPriceData)
   }
 
   render() {
