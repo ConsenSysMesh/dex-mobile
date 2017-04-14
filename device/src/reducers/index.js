@@ -1,5 +1,7 @@
 import navigation  from './navigation'
-console.log('navigation(index)', navigation);
+import graphs from './graphs'
+
 export {
   navigation,
+  graphs,
 }
