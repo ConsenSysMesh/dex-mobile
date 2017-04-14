@@ -9,5 +9,9 @@ export default function graphs(state = INITIAL_STATE, action) {
         ...state,
         price_data: [...state[price_data], action.result]
       }
+      break
+    default:
+      return state
+      break
   }
 }
