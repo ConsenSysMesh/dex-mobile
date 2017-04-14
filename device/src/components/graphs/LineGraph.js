@@ -9,12 +9,14 @@ import {
 } from 'react-native'
 
 class LineGraphComponent extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   componentWillMount() {
-    console.log('graphs', Graphs.getPriceData)
+    const { dispatch } = this.props;
+    console.log('this.props', this.props)
+    console.log('dispatch', dispatch)
   }
 
   render() {
@@ -30,6 +32,6 @@ const mapStoreToProps = (store) => {
   return mappedProps
 }
 
-const Navigation = connect(mapStoreToProps)(LineGraphComponent)
+const LineGraph = connect(mapStoreToProps)(LineGraphComponent)
 
-export default LineGraphComponent;
+export default LineGraph;
