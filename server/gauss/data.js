@@ -1,6 +1,3 @@
-// file where data objects live
-
-
 /*
   line_grpah_data
   params:
