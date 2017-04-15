@@ -1,10 +1,10 @@
 import express from 'express'
+import http from 'http'
 import bodyParser from 'body-parser'
 
-import { line_graph_data } from '../gauss/data'
-console.log('line_graph_data', line_graph_data)
+let app = express()
+let server = http.Server(app)
 
-const app = express()
 // app.use(bodyParser.json())
 
 app.get('/price', (req, res) => {
