@@ -1,9 +1,13 @@
 import express from 'express'
-import http from 'http'
 import bodyParser from 'body-parser'
+import http from 'http'
+import socketIO from 'socket.io'
 
 let app = express()
 let server = http.Server(app)
+let io = new socketIO(server)
+
+console.log('io', io)
 
 // app.use(bodyParser.json())
 
