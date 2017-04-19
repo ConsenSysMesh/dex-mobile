@@ -1,8 +1,6 @@
 import Promise from 'bluebird';
 import gaussian from 'gaussian';
-
-import { appendLineGraph } from './data'
-
+import rp from 'request-promise';
 
 // globals
 let volume = 5;
@@ -59,7 +57,18 @@ export function marketPrice() {
     .then((p) => {
       console.log('new market price is', p)
       price = p;
-      resolve(p);
+      let send_obj = {
+        method: 'GET',
+        uri: 'http://localhost:6000/price',
+        body: {
+          price: p,
+          date: new Date(),
+        },
+        json: true
+      }
+      return rp(send_obj)
+    }).then((result) => {
+      console.log('server response', result)
     }).catch((error) => {
       reject(error);
     });
