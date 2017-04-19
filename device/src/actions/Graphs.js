@@ -4,14 +4,18 @@ import SocketIOClient from 'socket.io-client'
 export default class Graphs {
   constructor() {
     this.socket = SocketIOClient('http://localhost:6000', {jsonp: false})
-    console.log("this.socket", this.socket)
-    // this.socket.on('price-history', this.dataFeed)
   }
 
-  dataFeed() {
-    socket.on('price-history', (price_obj) => {
-      console.log('price_obj', price_obj)
-    })
+  priceDataFeed() {
+    return (dispatch) => {
+      console.log("this.socket", this.socket)
+      this.socket.on('connected' {
+        console.log('client is connected')
+      })
+      this.socket.on('price-history', (price_obj) => {
+        console.log('price_obj', price_obj)
+      })
+    }
   }
 
 
