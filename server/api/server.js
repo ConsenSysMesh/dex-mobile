@@ -7,7 +7,9 @@ let app = express()
 let server = http.Server(app)
 let io = new socketIO(server)
 
-console.log('io', io)
+io.on('connection', (socket) => {
+  console.log('a client just joined!', socket.id)
+})
 
 // app.use(bodyParser.json())
 
