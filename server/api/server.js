@@ -1,22 +1,18 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import http from 'http'
-import socketIO from 'socket.io'
+var express = require('express');
+var http = require('http')
+var socketio = require('socket.io');
 
-let app = express()
-let server = http.Server(app)
-let io = new socketIO(server)
-
-io.on('connection', (socket) => {
-  console.log('a client just joined!', socket.id)
-})
-
-// app.use(bodyParser.json())
+var app = express();
+var server = http.Server(app);
+var websocket = socketio(server);
+server.listen(3000, () => console.log('listening on *:3000'));
 
 app.get('/price', (req, res) => {
-  console.log('hit get endpoint')
   res.end('yo this is the api')
 })
-app.listen(6000)
 
-console.log('API listening on port 6000')
+
+// The event will be called when a client is connected.
+websocket.on('connection', (socket) => {
+  console.log('A client just joined on', socket.id);
+});
