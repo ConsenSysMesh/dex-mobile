@@ -1,8 +1,10 @@
 import express from 'express'
 import http from 'http'
 import socketio from 'socket.io'
+import bodyparser from 'body-parser'
 
 const app = express();
+app.use(bodyparser.json())
 const server = http.Server(app);
 const websocket = socketio(server);
 
@@ -13,8 +15,7 @@ websocket.on('connection', (socket) => {
 
 // restful endpoints
 app.get('/price', (req, res) => {
-  console.log('req', req)
-  console.log('res', res)
+  console.log('req', JSON.stringify(req.body))
   // websocket.emit('price', )
   res.end('yo this is the api')
 })
