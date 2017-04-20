@@ -59,16 +59,18 @@ export function marketPrice() {
       price = p;
       let send_obj = {
         method: 'GET',
-        uri: 'http://localhost:6000/price',
+        uri: 'http://localhost:3000/price',
         body: {
           price: p,
           date: new Date(),
         },
         json: true
       }
+      console.log('send_obj.body', send_obj.body)
       return rp(send_obj)
     }).then((result) => {
       console.log('server response', result)
+      return true
     }).catch((error) => {
       reject(error);
     });
