@@ -3,7 +3,7 @@ import http from 'http'
 import socketio from 'socket.io'
 import bodyparser from 'body-parser'
 import { graphqlExpress } from 'graphql-server-express'
-
+import { schema, root } from './schema'
 const app = express();
 app.use(bodyparser.json())
 const server = http.Server(app)
@@ -11,7 +11,11 @@ const websocket = socketio(server)
 
 
 // set up graphql config
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: myGraphQLSchema }))
+app.use('/graphql', bodyParser.json(), graphqlExpress({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}))
 
 
 // The event will be called when a client is connected.

@@ -1,19 +1,13 @@
-import { graphql, buildSchema } from 'graphql'
+import { buildSchema } from 'grqphql'
 
-// Construct a schema
-const schema = buildSchema(`
+export const schema = buildSchema(`
   type Query {
     hello: String
   }
 `)
 
-// root provides a resolver function for each API endpoint
-var root = {
+export const root = {
   hello: () => {
-    return 'Hello World'
+    return 'yo yo, whats happenin'
   },
 }
-
-graphql(schema, `{ hello }`, root).then((response) => {
-  console.log(response)
-})
