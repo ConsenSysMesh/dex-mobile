@@ -4,9 +4,10 @@
   "description": "FX trading ERC20 tokens on mobile dapp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "babel-node ./server/test/test.js --presets es2015",
     "gauss-sim": "babel-node ./server/gauss/simulation.js --presets es2015",
-    "rest-api": "babel-node ./server/api/server.js --presets es2015"
+    "api": "babel-node ./server/api/server.js --presets es2015",
+    "schema": "babel-node ./server/api/Schema.js --presets es2015"
   },
   "keywords": [
     "forex",
@@ -25,6 +26,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "gaussian": "^1.1.0",
+    "graphql": "^0.9.5",
     "graphql-server-express": "^0.7.2",
     "http": "0.0.0",
     "request": "^2.81.0",
