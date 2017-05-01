@@ -19,7 +19,8 @@ export default class Market {
     return new Promise((resolve, reject) => {
       return Promise.delay(0)
       .then(() => {
-        this.bookA.push(amount)
+        return this.bookA.splice(insertA(amount) + 1, 0, amount)
+      }).then(() => {
         resolve(true)
       }).catch((err) => {
         reject(err)
@@ -32,11 +33,31 @@ export default class Market {
     return new Promise((resolve, reject) => {
       return Promise.delay(0)
       .then(() => {
-        this.bookB.push(amount)
+        return array.splice(insert())
         resolve(true)
       }).catch((err) => {
         reject(err)
       })
     })
+  }
+
+  insertA(amount) {
+    let i = 0
+    for(i; i < this.bookA.length; i++) {
+      if (amount > this.bookA[i]) {
+        break
+      }
+    }
+    return i
+  }
+
+  insertB(amount) {
+    let i = 0
+    for(i; i < this.bookB.length; i++) {
+      if (amount > this.bookB[i]) {
+        break
+      }
+    }
+    return i
   }
 }
