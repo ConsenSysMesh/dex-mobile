@@ -91,7 +91,7 @@ export function batchVolume() {
         method: 'GET',
         uri: 'http://localhost:3000/volume',
         body: {
-          price: v,
+          volume: v,
           date: new Date().getTime(),
         },
         json: true
