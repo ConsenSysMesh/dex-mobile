@@ -4,7 +4,8 @@ import Navigation from './Navigation'
 
 // market
 import Market from './markets/Market'
-console.log('Market', Market)
+import VolumeLine from './markets/VolumeLine'
+
 // graphs
 import LineGraph from './graphs/LineGraph'
 
@@ -13,4 +14,5 @@ export {
   Navigation,
   Market,
   LineGraph,
+  VolumeLine, 
 }
