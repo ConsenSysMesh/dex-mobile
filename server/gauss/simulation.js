@@ -84,8 +84,23 @@ export function batchVolume() {
     Promise.resolve(bellRandom(volume, volume_variance))
     .then((v) => {
       console.log('new volume is', Math.floor(v));
-      volume = Math.floor(v);
-      resolve(v);
+      volume = Math.round(v);
+      return v
+    }).then((v) => {
+      let send_obj = {
+        method: 'GET',
+        uri: 'http://localhost:3000/volume',
+        body: {
+          price: v,
+          date: new Date().getTime(),
+        },
+        json: true
+      }
+      console.log('send_obj.body', send_obj.body)
+      return rp(send_obj)
+    }).then(() => {
+
+      resolve(true);
     }).catch((error) => {
       reject(error);
     })
