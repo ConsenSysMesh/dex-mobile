@@ -32,6 +32,7 @@ app.get('/price', (req, res) => {
 })
 
 app.get('/volume', (req, res) => {
+  console.log('hit volume endpoint')
   websocket.emit('volume', JSON.stringify(req.body))
   res.end('sent new volume obj', res)
 })
