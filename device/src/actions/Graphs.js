@@ -14,6 +14,7 @@ export default class Graphs {
       })
       this.socket.on('price', (price_obj) => {
         console.log('price_obj(device)', price_obj)
+        dispatch({ type: 'UPDATE_PRICE_HISTORY', result: price_obj})
       })
       console.log('socket(device)', this.socket)
     }
