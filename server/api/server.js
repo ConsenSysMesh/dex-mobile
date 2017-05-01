@@ -4,6 +4,7 @@ import socketio from 'socket.io'
 import bodyparser from 'body-parser'
 // import { graphqlExpress } from 'graphql-server-express'
 // import { schema, root } from './schema'
+
 const app = express();
 app.use(bodyparser.json())
 const server = http.Server(app)
@@ -26,7 +27,6 @@ websocket.on('connection', (socket) => {
 // restful endpoints
 app.get('/price', (req, res) => {
   console.log('req', JSON.stringify(req.body))
-  // websocket.emit('price', )
   websocket.emit('price', JSON.stringify(req.body))
   res.end('yo this is the api')
 })

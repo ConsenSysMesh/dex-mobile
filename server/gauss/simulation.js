@@ -18,8 +18,6 @@ export function simulationLoop() {
   .then(() => {
     return calculateMarketParams();
   }).then(() => {
-    return appendLineGraph(price, new Date())
-  }).then(() => {
     return shotgun();
   }).then(() => {
     return simulationLoop();
@@ -61,8 +59,8 @@ export function marketPrice() {
         method: 'GET',
         uri: 'http://localhost:3000/price',
         body: {
-          price: p,
-          date: new Date(),
+          price: Math.round(p),
+          date: new Date().getTime(),
         },
         json: true
       }
@@ -70,7 +68,7 @@ export function marketPrice() {
       return rp(send_obj)
     }).then((result) => {
       console.log('server response', result)
-      return true
+      resolve(true)
     }).catch((error) => {
       reject(error);
     });
