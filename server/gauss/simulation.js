@@ -59,7 +59,7 @@ export function marketPrice() {
         method: 'GET',
         uri: 'http://localhost:3000/price',
         body: {
-          price: Math.round(p),
+          price: p,
           date: new Date().getTime(),
         },
         json: true
