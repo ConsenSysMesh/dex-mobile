@@ -1,13 +1,14 @@
 const INITIAL_STATE = {
-  price_data: [],
+  price_history: [],
 }
 
 export default function graphs(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case 'UPDATE_PRICE_DATA':
+    case 'UPDATE_PRICE_HISTORY':
+      console.log('hit reducer update price')
       return {
         ...state,
-        price_data: [...state[price_data], action.result]
+        price_history: state.price_history.concat(JSON.parse(action.result))
       }
       break
     default:
