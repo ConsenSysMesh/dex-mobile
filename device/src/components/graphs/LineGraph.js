@@ -39,7 +39,7 @@ class LineGraphComponent extends Component {
         <VictoryLine
           data={price_history}
           style={{data:
-            {stroke: "red", strokeWidth: 4}
+            {stroke: "hsl(187, 47%, 55%)", strokeWidth: 2}
           }}
           x="date"
           y="price"
