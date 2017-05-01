@@ -16,8 +16,6 @@ class LineGraphComponent extends Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    console.log('this.props', this.props)
-    console.log('dispatch', dispatch)
     dispatch(Graphs.priceDataFeed())
   }
 

@@ -20,6 +20,8 @@ export default class Graphs {
 
   volumeDataFeed() {
     return (dispatch) => {
+      console.log('hit volume data feed')
+
       this.socket.on('volume', (volume_obj) => {
         console.log('volume_obj(device)', volume_obj)
         dispatch({ type: 'UPDATE_VOLUME_HISTORY', result: volume_obj })
