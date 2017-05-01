@@ -28,7 +28,12 @@ websocket.on('connection', (socket) => {
 app.get('/price', (req, res) => {
   console.log('req', JSON.stringify(req.body))
   websocket.emit('price', JSON.stringify(req.body))
-  res.end('yo this is the api')
+  res.end('sent new price obj', res)
+})
+
+app.get('/volume', (req, res) => {
+  websocket.emit('volume', JSON.stringify(req.body))
+  res.end('sent new volume obj', res)
 })
 
 server.listen(3000, () => console.log('listening on *:3000'))
