@@ -32,12 +32,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E8E8EE',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    backgroundColor: "hsl(220, 10%, 40%)",
+    color: "#E8E8EE",
   },
 });
 
