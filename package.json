@@ -6,7 +6,7 @@
   "scripts": {
     "test": "babel-node ./server/test/test.js --presets es2015",
     "gauss-sim": "babel-node ./server/gauss/simulation.js --presets es2015",
-    "api": "babel-node ./server/api/server.js --presets es2015",
+    "server": "babel-node ./server/api/server.js --presets es2015",
     "schema": "babel-node ./server/api/Schema.js --presets es2015"
   },
   "keywords": [
