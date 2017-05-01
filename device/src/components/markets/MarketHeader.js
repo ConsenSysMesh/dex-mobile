@@ -11,7 +11,7 @@ export default class MarketHeader extends Component {
 
   render() {
     return (
-      <View style={{ alignItems: true, flex: 1 }}>
+      <View style={{ alignItems: true }}>
         <Text style={{ color: "#E8E8EE", fontSize: 50}}>DEX/GNO</Text>
       </View>
     )

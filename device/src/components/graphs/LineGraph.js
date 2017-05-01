@@ -59,4 +59,4 @@ const mapStoreToProps = (store) => {
 
 const LineGraph = connect(mapStoreToProps)(LineGraphComponent)
 
-export default LineGraph;
+export default LineGraph

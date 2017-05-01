@@ -14,7 +14,7 @@ export default class Market extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1, alignItems: true }}>
         <MarketHeader />
         <VolumeLine />
       </View>

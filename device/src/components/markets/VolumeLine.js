@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {
   VictoryLine
 } from 'victory-native'
+import { connect } from 'react-redux'
 
-export default class VolumeLine extends Component {
+class VolumeLineComponent extends Component {
   constructor() {
     super()
   }
@@ -14,3 +15,13 @@ export default class VolumeLine extends Component {
     )
   }
 }
+
+const mapStoreToProps = (store) => {
+  let mappedProps = new Object()
+  mappedProps.graphs = store.graphs
+  return mappedProps
+}
+
+const VolumeLine = connect(mapStoreToProps)(VolumeLineComponent)
+
+export default VolumeLine
