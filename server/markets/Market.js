@@ -17,7 +17,7 @@ export default class Market {
     return new Promise((resolve, reject) => {
       return Promise.delay(0)
       .then(() => {
-        return this.bookA.splice(insertA(amount) + 1, 0, amount)
+        return this.bookA.splice(this.insertA(amount) + 1, 0, amount)
       }).then(() => {
         resolve(true)
       }).catch((err) => {
@@ -31,8 +31,7 @@ export default class Market {
     return new Promise((resolve, reject) => {
       return Promise.delay(0)
       .then(() => {
-        return array.splice(insert())
-        resolve(true)
+        return this.bookB.splice(this.insertB(amount) + 1, 0, amount)
       }).catch((err) => {
         reject(err)
       })
