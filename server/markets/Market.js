@@ -5,13 +5,11 @@ import Promise from 'bluebird'
  * microservice container for Mob instance
  */
 export default class Market {
-  constructor() {
-    // this.tokenA = tokenA
-    // this.tokenB = tokenB
+  constructor(params) {
+    this.tokenA = params.tokenA
+    this.tokenB = params.tokenB
     this.bookA = []
     this.bookB = []
-
-    console.log('created Market class, yuhhh')
   }
 
   sellA(amount) {
