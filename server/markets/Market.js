@@ -12,12 +12,11 @@ export default class Market {
     this.bookB = []
   }
 
-  sellA(amount) {
-    console.log('hit sell A')
+  sellA(sell_obj) {
     return new Promise((resolve, reject) => {
       return Promise.delay(0)
       .then(() => {
-        return this.bookA.splice(this.insertA(amount) + 1, 0, amount)
+        return this.bookA.splice(this.insertA(sell_obj) + 1, 0, sell_obj)
       }).then(() => {
         resolve(true)
       }).catch((err) => {
@@ -26,32 +25,33 @@ export default class Market {
     })
   }
 
-  sellB(amount) {
-    console.log('hit sell B')
+  sellB(sell_obj) {
     return new Promise((resolve, reject) => {
       return Promise.delay(0)
       .then(() => {
-        return this.bookB.splice(this.insertB(amount) + 1, 0, amount)
+        return this.bookB.splice(this.insertB(sell_obj) + 1, 0, sell_obj)
+      }).then(() => {
+        resolve(true)
       }).catch((err) => {
         reject(err)
       })
     })
   }
 
-  insertA(amount) {
+  insertA(sell_obj) {
     let i = 0
     for(i; i < this.bookA.length; i++) {
-      if (amount > this.bookA[i]) {
+      if (sell_obj.price > this.bookA[i]) {
         break
       }
     }
     return i
   }
 
-  insertB(amount) {
+  insertB(sell_obj) {
     let i = 0
     for(i; i < this.bookB.length; i++) {
-      if (amount > this.bookB[i]) {
+      if (sell_obj.price > this.bookB[i]) {
         break
       }
     }

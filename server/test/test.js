@@ -2,6 +2,14 @@ import Market from '../markets/Market'
 import Promise from 'bluebird'
 
 let permutation
+let sellA_obj = {
+  amount: 3000,
+  price: 1.25,
+}
+let sellB_obj = {
+  amount: 5000,
+  price: 1.15,
+}
 
 export function createMarket(tokenA, tokenB) {
   return new Promise((resolve, reject) => {
@@ -20,10 +28,11 @@ export function createMarket(tokenA, tokenB) {
 }
 
 export function submitSell() {
+  console.log('hit submit sell')
   return new Promise((resolve, reject) => {
-    return permutation.sellA(10)
+    return permutation.sellA(sellA_obj)
     .then(() => {
-      return permutation.sellB(10)
+      return permutation.sellB(sellB_obj)
     }).then(() => {
       console.log('permutation', permutation)
       resolve(true)
