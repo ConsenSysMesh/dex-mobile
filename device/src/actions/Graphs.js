@@ -26,4 +26,12 @@ export default class Graphs {
       })
     }
   }
+  marketDepthDataFeed() {
+    return (dispatch) => {
+      this.socket.on('market_depth', (depth_obj) => {
+        console.log('depth_obj(device)', depth_obj)
+        dispatch({ type: 'UPDATE_MARKET_DEPTH', result: depth_obj})
+      })
+    }
+  }
 }
