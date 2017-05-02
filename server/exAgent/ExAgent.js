@@ -1,5 +1,8 @@
+import Promise from 'bluebird'
+import levelup from 'levelup'
 export default class ExAgent {
   constructor(params) {
+    this.settlement = levelup('../settlement')
     this.market = params.market
     this.tokenA = params.tokenA
     this.tokenB = params.tokenB
@@ -15,8 +18,7 @@ export default class ExAgent {
     })
   }
 
-
-
+  // matching function adheres to ACID transaction principles
   match() {
 
   }
