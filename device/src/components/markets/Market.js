@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LineGraph, VolumeLine } from '../index'
+import { LineGraph, VolumeLine, MarketDepth } from '../index'
 import MarketHeader from './MarketHeader'
 import {
   View,
@@ -16,7 +16,7 @@ export default class Market extends Component {
     return (
       <View style={{ flex: 1, alignItems: true }}>
         <MarketHeader />
-        <VolumeLine />
+        <MarketDepth />
       </View>
     )
   }
