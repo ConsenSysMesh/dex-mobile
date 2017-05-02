@@ -41,7 +41,7 @@ export default class Market {
   insertA(sell_obj) {
     let i = 0
     for(i; i < this.bookA.length; i++) {
-      if (sell_obj.price > this.bookA[i]) {
+      if (sell_obj.price < this.bookA[i]) {
         break
       }
     }
@@ -51,7 +51,7 @@ export default class Market {
   insertB(sell_obj) {
     let i = 0
     for(i; i < this.bookB.length; i++) {
-      if (sell_obj.price > this.bookB[i]) {
+      if (sell_obj.price < this.bookB[i]) {
         break
       }
     }
