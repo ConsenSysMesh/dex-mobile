@@ -1,30 +1,28 @@
 // import components
-import React, { Component } from 'react'
-import { Market } from './index'
+import React, { PropTypes } from 'react'
+import { addNavigationHelpers, StackNavigator } from 'react-navigation'
 import {
   View,
   StyleSheet,
 } from 'react-native'
+import { connect } from 'react-redux'
+import { Market } from './index'
+console.log('Market', Market)
 
-// import { stackNavigator, addNavigationHelpers } from 'react-navigation'
+export const Router = StackNavigator({
+  Market: { screen: Market}
+})
+
+// const NavigationState = ({ dispatch, nav }) => (
+//   <AppNavigator navigation={addNavigationHelpers({ dispatch, nav })} />
+// )
 //
-// export const appNavigator = stackNavigator({
-//   Market: { screen: Market }
-// })
-
-export default class RouterComponent extends Component {
-  render() {
-    return (
-      // <Router
-      //   firstRouter={route1}
-      //   ref={'router'}
-      // />
-      <View>
-
-      </View>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-});
+// const mapStoreToProps = (store) => {
+//   let mappedProps = new Object()
+//   mappedProps.navigation = store.navigation
+//   return mappedProps
+// }
+//
+// const Router = connect(mapStoreToProps)(NavigationState)
+//
+// export default Router

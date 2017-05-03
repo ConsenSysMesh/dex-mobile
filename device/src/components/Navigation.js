@@ -3,7 +3,7 @@ import { Main } from './index'
 // console.log('Router', Router)
 import store from '../store'
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures'
-
+import { stackNavigator } from 'react-navigation'
 import React, { Component } from 'react'
 import {
   View,
