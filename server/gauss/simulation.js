@@ -15,9 +15,10 @@ SIMULATION LOOP
 ///////////////////////////////////////////////////////////
 */
 export function simulationLoop(_market) {
+  console.log('market(sim)', _market)
+  market = _market
   return Promise.delay(5000)
   .then(() => {
-    market = _market
     return calculateMarketParams()
   }).then(() => {
     return shotgun()
@@ -142,9 +143,12 @@ export function sellA() {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
       console.log('sell A at price:', p)
+      sellA_obj['price'] = p
       return flatRandom()
     }).then((q) => {
+      sellA_obj['quantity'] = q
       console.log('sell Quantity:', q)
+      console.log('sellA_obj', sellA_obj)
     }).catch((error) => {
       reject(error)
     })
@@ -157,9 +161,12 @@ export function sellB() {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
       console.log('sell B at', p)
+      sellB_obj['price'] = p
       return flatRandom()
     }).then((q) => {
       console.log('sellB quantity', q)
+      sellB_obj['quantity'] = q
+      console.log('sellB_obj', sellB_obj)
     }).catch((error) => {
       reject(error)
     })
@@ -186,4 +193,4 @@ export function tradeDirection() {
   return Math.round(Math.random())
 }
 
-simulationLoop()
+// simulationLoop()
