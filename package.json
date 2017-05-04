@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "babel-node ./server/test/test.js --presets es2015",
+    "random-trading": "babel-node ./server/test/random_trading.js --presets es2015",
     "gauss-sim": "babel-node ./server/gauss/simulation.js --presets es2015",
     "server": "babel-node ./server/api/server.js --presets es2015",
     "schema": "babel-node ./server/api/Schema.js --presets es2015"
@@ -29,6 +30,7 @@
     "graphql": "^0.9.5",
     "graphql-server-express": "^0.7.2",
     "http": "0.0.0",
+    "level": "^1.6.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
     "socket.io": "^1.7.3"
