@@ -24,11 +24,11 @@ export function createMarket(tokenA, tokenB) {
       })
     }).then(() => {
       return exAgent = new ExAgent({
-        market: market,
+        market: market
         tokenA: tokenA,
         tokenB: tokenB,
       })
-    }).then(() => {
+    .then(() => {
       resolve(true)
     }).catch((error) => {
       reject(error)
