@@ -3,6 +3,7 @@ import gaussian from 'gaussian';
 import rp from 'request-promise';
 
 // globals
+let market
 let volume = 5;
 let price = 1;
 let price_variance = .1;
@@ -13,9 +14,10 @@ let volume_variance = 1;
 SIMULATION LOOP
 ///////////////////////////////////////////////////////////
 */
-export function simulationLoop() {
+export function simulationLoop(_market) {
   return Promise.delay(5000)
   .then(() => {
+    market = _market;
     return calculateMarketParams();
   }).then(() => {
     return shotgun();
@@ -138,7 +140,10 @@ export function sellA() {
   return new Promise((resolve, reject) => {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
-      console.log('sell A at', p);
+      console.log('sell A at', p)
+      return market.sellA(p)
+    }).then(() => {
+      resolve(true)
     }).catch((error) => {
       reject(error);
     });
@@ -149,7 +154,10 @@ export function sellB() {
   return new Promise((resolve, reject) => {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
-      console.log('sell B at', p);
+      console.log('sell B at', p)
+      return market.sellB(p)
+    }).then(() => {
+      resolve(true)
     }).catch((error) => {
       reject(error);
     });
