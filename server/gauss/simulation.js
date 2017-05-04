@@ -1,13 +1,13 @@
-import Promise from 'bluebird';
-import gaussian from 'gaussian';
-import rp from 'request-promise';
+import Promise from 'bluebird'
+import gaussian from 'gaussian'
+import rp from 'request-promise'
 
 // globals
 let market
-let volume = 5;
-let price = 1;
-let price_variance = .1;
-let volume_variance = 1;
+let volume = 5
+let price = 1
+let price_variance = .1
+let volume_variance = 1
 
 /*
 ///////////////////////////////////////////////////////////
@@ -17,19 +17,19 @@ SIMULATION LOOP
 export function simulationLoop(_market) {
   return Promise.delay(5000)
   .then(() => {
-    market = _market;
-    return calculateMarketParams();
+    market = _market
+    return calculateMarketParams()
   }).then(() => {
-    return shotgun();
+    return shotgun()
   }).then(() => {
-    return simulationLoop();
+    return simulationLoop()
   }).catch((error) => {
-    console.log('error', error);
+    console.log('error', error)
     Promise.delay(5000)
     .then(() => {
-      return simulationLoop();
-    });
-  });
+      return simulationLoop()
+    })
+  })
 }
 
 /*
@@ -42,11 +42,11 @@ export default function calculateMarketParams() {
   return new Promise((resolve, reject) => {
     Promise.resolve(marketPrice())
     .then(() => {
-      return batchVolume();
+      return batchVolume()
     }).then(() => {
-      resolve(true);
+      resolve(true)
     }).catch((error) => {
-      reject(error);
+      reject(error)
     })
   })
 }
@@ -56,7 +56,7 @@ export function marketPrice() {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
       console.log('new market price is', p)
-      price = p;
+      price = p
       let send_obj = {
         method: 'GET',
         uri: 'http://localhost:3000/price',
@@ -72,21 +72,21 @@ export function marketPrice() {
       console.log('server response', result)
       resolve(true)
     }).catch((error) => {
-      reject(error);
-    });
-  });
+      reject(error)
+    })
+  })
 }
 
 export function marketVariance() {
-  console.log('hit marketVariance');
+  console.log('hit marketVariance')
 }
 
 export function batchVolume() {
   return new Promise((resolve, rejct) => {
     Promise.resolve(bellRandom(volume, volume_variance))
     .then((v) => {
-      console.log('new volume is', Math.floor(v));
-      volume = Math.round(v);
+      console.log('new volume is', Math.floor(v))
+      volume = Math.round(v)
       return v
     }).then((v) => {
       let send_obj = {
@@ -102,9 +102,9 @@ export function batchVolume() {
       return rp(send_obj)
     }).then(() => {
 
-      resolve(true);
+      resolve(true)
     }).catch((error) => {
-      reject(error);
+      reject(error)
     })
   })
 }
@@ -116,9 +116,9 @@ SHOTGUN: TRADING BATCH
 */
 export function shotgun() {
   for(let i = 0; i < volume; i++) {
-    tradingEvent(i);
+    tradingEvent(i)
   }
-  return true;
+  return true
 }
 
 export function tradingEvent(i) {
@@ -126,42 +126,44 @@ export function tradingEvent(i) {
     Promise.resolve(tradeDirection())
     .then((d) => {
       if(d==0) {
-        return sellA();
+        return sellA()
       } else {
-        return sellB();
+        return sellB()
       }
     }).catch((error) => {
-      reject(error);
-    });
-  });
+      reject(error)
+    })
+  })
 }
 
+let sellA_obj = {}
 export function sellA() {
   return new Promise((resolve, reject) => {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
-      console.log('sell A at', p)
-      return market.sellA(p)
-    }).then(() => {
-      resolve(true)
+      console.log('sell A at price:', p)
+      return flatRandom()
+    }).then((q) => {
+      console.log('sell Quantity:', q)
     }).catch((error) => {
-      reject(error);
-    });
-  });
+      reject(error)
+    })
+  })
 }
 
+let sellB_obj = {}
 export function sellB() {
   return new Promise((resolve, reject) => {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
       console.log('sell B at', p)
-      return market.sellB(p)
-    }).then(() => {
-      resolve(true)
+      return flatRandom()
+    }).then((q) => {
+      console.log('sellB quantity', q)
     }).catch((error) => {
-      reject(error);
-    });
-  });
+      reject(error)
+    })
+  })
 }
 
 /*
@@ -170,19 +172,18 @@ MATH UTILIITES
 ///////////////////////////////////////////////////////////
 */
 export function bellRandom(mean, variance) {
-  const distribution = gaussian(mean, variance);
+  const distribution = gaussian(mean, variance)
   // Take a random sample using inverse transform sampling method.
-  const sample = distribution.ppf(Math.random());
-  return sample;
+  const sample = distribution.ppf(Math.random())
+  return sample
 }
 
 export function flatRandom(mean) {
-  console.log('calculating flat random');
-  return mean;
+  return Math.floor(Math.random() * 100)
 }
 
 export function tradeDirection() {
-  return Math.round(Math.random());
+  return Math.round(Math.random())
 }
 
-simulationLoop();
+simulationLoop()
