@@ -15,8 +15,8 @@ SIMULATION LOOP
 ///////////////////////////////////////////////////////////
 */
 export function simulationLoop(_market) {
-  console.log('market(sim)', _market)
   market = _market
+  console.log('market', market)
   return Promise.delay(5000)
   .then(() => {
     return calculateMarketParams()
@@ -126,8 +126,9 @@ export function tradingEvent(i) {
   return new Promise((resolve, reject) => {
     Promise.resolve(tradeDirection())
     .then((d) => {
+      console.log('market(here)', market)
       if(d==0) {
-        return sellA()
+        return sellA(market)
       } else {
         return sellB()
       }
@@ -140,17 +141,21 @@ export function tradingEvent(i) {
 let sellA_obj = {}
 export function sellA() {
   return new Promise((resolve, reject) => {
-    Promise.resolve(bellRandom(price, price_variance))
-    .then((p) => {
-      console.log('sell A at price:', p)
+    return Promise.delay(0)
+    .then(() =>. {
+      return bellRandom(price, price_variance)
+    }).then((p) => {
+      console.log('### Sell A at price', p)
       sellA_obj['price'] = p
       return flatRandom()
     }).then((q) => {
+      console.log('### Sell A at quantity', q)
       sellA_obj['quantity'] = q
-      console.log('sell Quantity:', q)
-      console.log('sellA_obj', sellA_obj)
-    }).catch((error) => {
-      reject(error)
+      return market.sellA(sellA_obj)
+    }).then(() => {
+      resolve(true)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
@@ -158,17 +163,21 @@ export function sellA() {
 let sellB_obj = {}
 export function sellB() {
   return new Promise((resolve, reject) => {
-    Promise.resolve(bellRandom(price, price_variance))
-    .then((p) => {
-      console.log('sell B at', p)
+    return Promise.delay(0)
+    then(() => {
+      return bellRandom(price, price_variance)
+    }).then((p) => {
+      console.log('### Sell B at price', p)
       sellB_obj['price'] = p
       return flatRandom()
     }).then((q) => {
-      console.log('sellB quantity', q)
+      console.log('### Sell B at quantity', q)
       sellB_obj['quantity'] = q
-      console.log('sellB_obj', sellB_obj)
-    }).catch((error) => {
-      reject(error)
+      return market.sellB(sellB_obj)
+    }).then(() = {
+      resolve(true)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
