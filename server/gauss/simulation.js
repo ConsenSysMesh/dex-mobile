@@ -48,13 +48,15 @@ CALCULATE BATCH PARAMETERS
 
 export default function calculateMarketParams() {
   return new Promise((resolve, reject) => {
-    Promise.resolve(marketPrice())
+    return Promise.delay(0)
     .then(() => {
+      return marketPrice()
+    }).then(() => {
       return batchVolume()
     }).then(() => {
       resolve(true)
-    }).catch((error) => {
-      reject(error)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
@@ -63,7 +65,7 @@ export function marketPrice() {
   return new Promise((resolve, reject) => {
     Promise.resolve(bellRandom(price, price_variance))
     .then((p) => {
-      console.log('new market price is', p)
+      console.log('### Market Price:', p)
       price = p
       let send_obj = {
         method: 'GET',
@@ -74,10 +76,8 @@ export function marketPrice() {
         },
         json: true
       }
-      console.log('send_obj.body', send_obj.body)
       return rp(send_obj)
     }).then((result) => {
-      console.log('server response', result)
       resolve(true)
     }).catch((error) => {
       reject(error)
@@ -85,16 +85,12 @@ export function marketPrice() {
   })
 }
 
-export function marketVariance() {
-  console.log('hit marketVariance')
-}
-
 export function batchVolume() {
   return new Promise((resolve, rejct) => {
     Promise.resolve(bellRandom(volume, volume_variance))
     .then((v) => {
       volume = Math.round(v)
-      console.log('new volume is', volume)
+      console.log('Batch Volume:', volume)
       return v
     }).then((v) => {
       let send_obj = {
@@ -109,7 +105,6 @@ export function batchVolume() {
       console.log('send_obj.body', send_obj.body)
       return rp(send_obj)
     }).then(() => {
-
       resolve(true)
     }).catch((error) => {
       reject(error)
@@ -125,9 +120,9 @@ SHOTGUN: TRADING BATCH
 
 export function shotgun() {
   return new Promise((resolve, reject) => {
-    return Promise.delay(0)
+    return Promise.delay(1000)
     .then(() => {
-      volume--
+      temp_volume--
       return tradingEvent()
     }).then(() => {
       if(temp_volume <= 0) {
@@ -165,13 +160,11 @@ export function sellA(market) {
     .then(() => {
       return bellRandom(price, price_variance)
     }).then((p) => {
-      console.log('### Sell A at price', p)
       sellA_obj['price'] = p
       return flatRandom()
     }).then((q) => {
-      console.log('### Sell A at quantity', q)
       sellA_obj['quantity'] = q
-      console.log('sellA_obj', sellA_obj)
+      console.log('### sellA order:', sellA_obj['price'], sellA_obj['quantity'])
       return market.sellA(sellA_obj)
     }).then(() => {
       resolve(true)
@@ -188,12 +181,11 @@ export function sellB(market) {
     .then(() => {
       return bellRandom(price, price_variance)
     }).then((p) => {
-      console.log('### Sell B at price', p)
       sellB_obj['price'] = p
       return flatRandom()
     }).then((q) => {
-      console.log('### Sell B at quantity', q)
       sellB_obj['quantity'] = q
+      console.log('### sellB order:', sellB_obj['price'], sellB['quantity'])
       return market.sellB(sellB_obj)
     }).then(() => {
       resolve(true)
