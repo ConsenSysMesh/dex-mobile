@@ -2,39 +2,57 @@ import Promise from 'bluebird'
 import gaussian from 'gaussian'
 import rp from 'request-promise'
 import Market from '../markets/Market.js'
+
 // globals
 const tokenA = '0x692a70d2e424a56d2c6c27aa97d1a86395877b3a'
 const tokenB = '0xbbf289d846208c16edc8474705c748aff07732db'
-
 let market = new Market({
   tokenA: tokenA,
   tokenB: tokenB,
 })
-
 let volume = 5
 let temp_volume
 let price = 1
 let price_variance = .1
 let volume_variance = 1
+let sellA_obj = {}
+let sellB_obj = {}
 
 /*
 ///////////////////////////////////////////////////////////
 SIMULATION LOOP
 ///////////////////////////////////////////////////////////
 */
+// export function simulationLoop() {
+//   return Promise.delay(5000)
+//   .then(() => {
+//     return calculateMarketParams()
+//   }).then(() => {
+//     temp_volume = volume
+//     return shotgun()
+//   }).then(() => {
+//     console.log('made it here')
+//     return simulationLoop()
+//   }).catch((error) => {
+//     console.log('error', error)
+//     Promise.delay(5000)
+//     .then(() => {
+//       return simulationLoop()
+//     })
+//   })
+// }
+
 export function simulationLoop() {
-  return Promise.delay(5000)
-  .then(() => {
-    return calculateMarketParams()
-  }).then(() => {
-    temp_volume = volume
-    return shotgun()
-  }).then(() => {
-    return simulationLoop()
-  }).catch((error) => {
-    console.log('error', error)
-    Promise.delay(5000)
+  return new Promise((resolve, reject) => {
+    return Promise.delay(5000)
     .then(() => {
+      return calculateMarketParams()
+    }).then(() => {
+      temp_volume = volume
+      return shotgun()
+    }).then(() => {
+      return simulationLoop()
+    }).catch((err) => {
       return simulationLoop()
     })
   })
@@ -126,10 +144,13 @@ export function shotgun() {
       return tradingEvent()
     }).then(() => {
       if(temp_volume <= 0) {
-        resolve(true)
+        console.log('hit resolve in shotgun')
+        return true
       } else {
         return shotgun()
       }
+    }).then(() => {
+      resolve(true)
     }).catch((err) => {
       reject(err)
     })
@@ -153,7 +174,6 @@ export function tradingEvent() {
   })
 }
 
-let sellA_obj = {}
 export function sellA(market) {
   return new Promise((resolve, reject) => {
     return Promise.delay(0)
@@ -174,7 +194,6 @@ export function sellA(market) {
   })
 }
 
-let sellB_obj = {}
 export function sellB(market) {
   return new Promise((resolve, reject) => {
     return Promise.delay(0)
@@ -185,7 +204,7 @@ export function sellB(market) {
       return flatRandom()
     }).then((q) => {
       sellB_obj['quantity'] = q
-      console.log('### sellB order:', sellB_obj['price'], sellB['quantity'])
+      console.log('### sellB order:', sellB_obj['price'], sellB_obj['quantity'])
       return market.sellB(sellB_obj)
     }).then(() => {
       resolve(true)
