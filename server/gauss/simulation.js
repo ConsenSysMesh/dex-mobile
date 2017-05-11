@@ -1,10 +1,18 @@
 import Promise from 'bluebird'
 import gaussian from 'gaussian'
 import rp from 'request-promise'
-
+import Market from '../markets/Market.js'
 // globals
-let market
+const tokenA = '0x692a70d2e424a56d2c6c27aa97d1a86395877b3a'
+const tokenB = '0xbbf289d846208c16edc8474705c748aff07732db'
+
+let market = new Market({
+  tokenA: tokenA,
+  tokenB: tokenB,
+})
+
 let volume = 5
+let temp_volume
 let price = 1
 let price_variance = .1
 let volume_variance = 1
@@ -14,12 +22,12 @@ let volume_variance = 1
 SIMULATION LOOP
 ///////////////////////////////////////////////////////////
 */
-export function simulationLoop(_market) {
-  market = _market
+export function simulationLoop() {
   return Promise.delay(5000)
   .then(() => {
     return calculateMarketParams()
   }).then(() => {
+    temp_volume = volume
     return shotgun()
   }).then(() => {
     return simulationLoop()
@@ -114,23 +122,36 @@ export function batchVolume() {
 SHOTGUN: TRADING BATCH
 ///////////////////////////////////////////////////////////
 */
+
 export function shotgun() {
-  for(let i = 0; i < volume; i++) {
-    tradingEvent(i)
-  }
-  return true
+  return new Promise((resolve, reject) => {
+    return Promise.delay(0)
+    .then(() => {
+      volume--
+      return tradingEvent()
+    }).then(() => {
+      if(temp_volume <= 0) {
+        resolve(true)
+      } else {
+        return shotgun()
+      }
+    }).catch((err) => {
+      reject(err)
+    })
+  })
 }
 
-export function tradingEvent(i) {
+export function tradingEvent() {
   return new Promise((resolve, reject) => {
     Promise.resolve(tradeDirection())
     .then((d) => {
-      console.log('market instance', market)
-      if(d==0) {
+      if (d == 0) {
         return sellA(market)
       } else {
         return sellB(market)
       }
+    }).then(() => {
+      resolve(true)
     }).catch((error) => {
       reject(error)
     })
@@ -150,9 +171,8 @@ export function sellA(market) {
     }).then((q) => {
       console.log('### Sell A at quantity', q)
       sellA_obj['quantity'] = q
-      console.log('market a', market)
-      market.sellA(sellA_obj)
-      return true
+      console.log('sellA_obj', sellA_obj)
+      return market.sellA(sellA_obj)
     }).then(() => {
       resolve(true)
     }).catch((err) => {
@@ -174,8 +194,7 @@ export function sellB(market) {
     }).then((q) => {
       console.log('### Sell B at quantity', q)
       sellB_obj['quantity'] = q
-      console.log('market b', market)
-      return true
+      return market.sellB(sellB_obj)
     }).then(() => {
       resolve(true)
     }).catch((err) => {
@@ -204,4 +223,4 @@ export function tradeDirection() {
   return Math.round(Math.random())
 }
 
-// simulationLoop()
+simulationLoop()
